@@ -8,7 +8,6 @@ import { api } from "~/trpc/react";
 import { Edit } from "./edit";
 import React from "react";
 import { type ChatCompletionMessage } from "openai/resources";
-import UploadFile from "./upload-file";
 
 interface selected {
   start: number;
@@ -188,7 +187,7 @@ const Input = () => {
         </div>
       </div>
       <div>
-        <UploadFile
+        {/* <UploadFile
           onSuccess={(res) => {
             if (!res) return;
             const file = res[0];
@@ -202,7 +201,7 @@ const Input = () => {
               },
             ]);
           }}
-        />
+        /> */}
         <div className="flex gap-2">
           {files.map((file) => (
             <div

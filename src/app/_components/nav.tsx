@@ -24,22 +24,22 @@ export default function Nav() {
   const [openAIKey, setOpenAIKey] = useState<string>(userQuery.data?.openAIKey ?? "");
   const debouncedOpenAIKey = useDebounce(openAIKey, 500);
 
-  const [model, setModel] = useState<"gpt-4" | "gpt-3.5-turbo">(userQuery.data?.openAIModel ?? "");
+  // const [model, setModel] = useState<"gpt-4" | "gpt-3.5-turbo">(userQuery.data?.openAIModel);
 
   console.log(userQuery.data?.openAIModel);
 
   useEffect(() => {
     addOpenAIKey.mutate({ key: debouncedOpenAIKey });
-  }, [debouncedOpenAIKey]);
+  }, [addOpenAIKey, debouncedOpenAIKey]);
 
   useEffect(() => {
     setOpenAIKey(userQuery.data?.openAIKey ?? "");
   }, [userQuery.data]);
 
-  useEffect(() => {
-    // Get the model as an enum
-    updateModelSelection.mutate({ model });
-  }, [model]);
+  // useEffect(() => {
+  //   // Get the model as an enum
+  //   updateModelSelection.mutate({ model });
+  // }, [model, updateModelSelection]);
 
 
   return (
@@ -87,7 +87,7 @@ export default function Nav() {
                 
               </div>
               <div className="w-full flex flex-row justify-between gap-x-2">
-                <Button onClick={() => setModel("gpt-4")} variant="outline" className={
+                {/* <Button onClick={() => setModel("gpt-4")} variant="outline" className={
                   model === "gpt-4" ? "bg-accent text-primary" : "text-background/50"
                 }>
                   gpt-4
@@ -96,7 +96,7 @@ export default function Nav() {
                   model === "gpt-3.5-turbo" ? "bg-accent text-primary" : "text-background/50"
                 }>
                   gpt-3.5-turbo
-                </Button>
+                </Button> */}
               </div>
             </PopoverContent>
           </Popover>
